@@ -62,9 +62,9 @@ class ObjectHandler {
 
     despawnObject(object) {
         let objectToDespawn = this.activeObjects.find(x => x.id == object.id);
-        let index = this.activeObjects.indexOf(objectToDespawn);
+        //let index = this.activeObjects.indexOf(objectToDespawn);
         objectToDespawn.removeFromWorld();
-        this.activeObjects.splice(index, 1);
+        this.activeObjects.shift();
     }
 
     loadData(data) {
