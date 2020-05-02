@@ -29,8 +29,8 @@ class Spike {
             strokeC.setAlpha(this.body.position.x);
             fillC.setAlpha(this.body.position.x);
         }
-        if (this.body.position.x > width * 3/4) {
-            let alpha = map(this.body.position.x, width * 3/4, width, 255, 100);
+        if (this.body.position.x > width * 3 / 4) {
+            let alpha = map(this.body.position.x, width * 3 / 4, width, 255, 100);
             strokeC.setAlpha(alpha);
             fillC.setAlpha(alpha);
         }
@@ -42,18 +42,20 @@ class Spike {
         Matter.Body.setPosition(this.body, Matter.Vector.create(this.body.position.x, this.initialY));
         triangle(this.body.vertices[0].x, this.body.vertices[0].y, this.body.vertices[1].x, this.body.vertices[1].y, this.body.vertices[2].x, this.body.vertices[2].y);
 
-        let c1 = color(35, 35, 35);
-        let c2 = color(70, 70, 70);
-        noStroke();
-        for (let i = 20; i >= 0; i--) {
-            let inter = map(i, 20, 0, 0, 1);
-            let c = lerpColor(c1, c2, inter);
-            if (this.body.position.x < width / 4) {
-                c.setAlpha(this.body.position.x - 100);
+        if (!lowDetailModeOn) {
+            let c1 = color(35, 35, 35);
+            let c2 = color(70, 70, 70);
+            noStroke();
+            for (let i = 20; i >= 0; i--) {
+                let inter = map(i, 20, 0, 0, 1);
+                let c = lerpColor(c1, c2, inter);
+                if (this.body.position.x < width / 4) {
+                    c.setAlpha(this.body.position.x - 100);
+                }
+                fill(c);
+                ellipseMode(CENTER);
+                ellipse(this.body.position.x, this.body.position.y, i);
             }
-            fill(c);
-            ellipseMode(CENTER);
-            ellipse(this.body.position.x, this.body.position.y, i);
         }
     }
 

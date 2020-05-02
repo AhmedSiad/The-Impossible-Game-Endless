@@ -27,6 +27,8 @@ let firstFadeAnimationFrame;
 let pg;
 let pgLines;
 
+let lowDetailModeOn = false;
+
 p5.disableFriendlyErrors = true;
 
 function setup() {
@@ -190,4 +192,9 @@ function fadeColors(c, originalC1, originalC2) {
 
     backgroundC1 = color(newRed1, newGreen1, newBlue1);
     backgroundC2 = color(newRed2, newGreen2, newBlue2);
+}
+
+
+function updateLowDetail() {
+    lowDetailModeOn = !lowDetailModeOn;
 }

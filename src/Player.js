@@ -1,9 +1,9 @@
 class Player {
 
     constructor() {
-        this.body = Bodies.rectangle(width / 3.5, 400, 40, 40, { friction: 1, frictionAir: 0, restitution: 0});
+        this.body = Bodies.rectangle(width / 3.5, 400, 40, 40, { friction: 1, frictionAir: 0, restitution: 0 });
         World.add(engine.world, [this.body]);
-        
+
         this.attempts = 0;
         this.score = 0;
         this.totalScore = 0;
@@ -24,16 +24,19 @@ class Player {
         rect(0, 0, 40, 40);
 
         pop();
-        let c1 = color(205, 80, 14);
-        let c2 = color(242, 117, 34);
 
-        noStroke();
-        for (let i = 35; i >= 0; i--) {
-            let inter = map(i, 35, 0, 0, 1);
-            let c = lerpColor(c1, c2, inter);
-            fill(c);
-            ellipseMode(CENTER);
-            ellipse(this.body.position.x, this.body.position.y, i);
+        if (!lowDetailModeOn) {
+            let c1 = color(205, 80, 14);
+            let c2 = color(242, 117, 34);
+
+            noStroke();
+            for (let i = 35; i >= 0; i--) {
+                let inter = map(i, 35, 0, 0, 1);
+                let c = lerpColor(c1, c2, inter);
+                fill(c);
+                ellipseMode(CENTER);
+                ellipse(this.body.position.x, this.body.position.y, i);
+            }
         }
 
         Matter.Body.setPosition(this.body, Matter.Vector.create(width / 3.5, this.body.position.y));
