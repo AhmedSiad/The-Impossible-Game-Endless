@@ -25,14 +25,16 @@ class Spike {
         let strokeC = color(255);
         let fillC = color(20);
 
-        if (this.body.position.x < width / 4) {
-            strokeC.setAlpha(this.body.position.x);
-            fillC.setAlpha(this.body.position.x);
-        }
-        if (this.body.position.x > width * 3 / 4) {
-            let alpha = map(this.body.position.x, width * 3 / 4, width, 255, 100);
-            strokeC.setAlpha(alpha);
-            fillC.setAlpha(alpha);
+        if (!lowDetailModeOn) {
+            if (this.body.position.x < width / 4) {
+                strokeC.setAlpha(this.body.position.x);
+                fillC.setAlpha(this.body.position.x);
+            }
+            if (this.body.position.x > width * 3 / 4) {
+                let alpha = map(this.body.position.x, width * 3 / 4, width, 255, 100);
+                strokeC.setAlpha(alpha);
+                fillC.setAlpha(alpha);
+            }
         }
         strokeWeight(2);
         stroke(strokeC);
