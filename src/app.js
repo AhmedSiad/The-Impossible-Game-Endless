@@ -28,6 +28,7 @@ let pg;
 let pgLines;
 
 let lowDetailModeOn = false;
+let musicPlaying = false;
 
 p5.disableFriendlyErrors = true;
 
@@ -112,8 +113,13 @@ function draw() {
             console.log(frameRate());
         }
 
-        if (keyIsDown(32)) {
+        if (keyIsDown(32) || keyIsDown(87) || keyIsDown(38)) {
             jump();
+            if (!musicPlaying) {
+                musicPlaying = true;
+                let audio = new Audio("src/music.mp3");
+                audio.play();
+            }
         }
     }
     image(pg, 0, 425);
