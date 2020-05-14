@@ -1,7 +1,7 @@
 function randomize(numberOfStructures) {
     let data = [];
     let total = 0;
-    structures.sort((a, b) => b.probability - a.probability);
+    structures.sort((a, b) => a.probability - b.probability);
     for (let k = 0; k < structures.length; k++) {
         total += structures[k].probability;
     }
